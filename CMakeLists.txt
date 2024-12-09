@@ -72,13 +72,13 @@ else()
 endif()
 
 # qt
-find_package(QT NAMES Qt5 COMPONENTS Core Widgets OpenGL Gui REQUIRED)
+find_package(QT NAMES Qt6 COMPONENTS Core Widgets OpenGL Gui REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 if(QT_FOUND)
     message(STATUS "Found QT version: ${Qt5_VERSION}.")
 else()
-    message(STATUS "Qt5 is not found.")
+    message(STATUS "Qt6 is not found.")
 endif()
 
 # vtk

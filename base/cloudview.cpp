@@ -52,8 +52,8 @@ namespace ct
     {
         m_renderwindow->AddRenderer(m_render);
         m_viewer.reset(new pcl::visualization::PCLVisualizer(m_render, m_renderwindow, "viewer", false));
-        this->SetRenderWindow(m_viewer->getRenderWindow());
-        m_viewer->setupInteractor(this->GetInteractor(), this->GetRenderWindow());
+        this->setRenderWindow(m_viewer->getRenderWindow());
+        m_viewer->setupInteractor(this->interactor(), this->renderWindow());
         m_viewer->setBackgroundColor((double)150.0 / 255.0, (double)150.0 / 255.0, (double)150.0 / 255.0);
         vtkSmartPointer<vtkAxesActor> actor = vtkSmartPointer<vtkAxesActor>::New();
         m_axes->SetOutlineColor(0.9300, 0.5700, 0.1300);
@@ -397,7 +397,7 @@ namespace ct
         if (!m_point_picker)
             return -1;
         m_renderwindow->GetInteractor()->StartPickCallback();
-        vtkRenderer* ren = this->GetInteractor()->FindPokedRenderer(pos.x, pos.y);
+        vtkRenderer* ren = this->interactor()->FindPokedRenderer(pos.x, pos.y);
         m_point_picker->Pick(pos.x, pos.y, 0.0, ren);
         return (static_cast<int>(m_point_picker->GetPointId()));
     }

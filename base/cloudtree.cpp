@@ -433,7 +433,7 @@ namespace ct
             layout->addStretch();
             QWidget* normals = new QWidget;
             normals->setLayout(layout);
-            normals->layout()->setMargin(0);
+            normals->layout()->setContentsMargins(0,0,0,0);
             m_table->setCellWidget(4, 1, point_size);
             m_table->setCellWidget(5, 1, opacity);
             m_table->setCellWidget(6, 1, normals);

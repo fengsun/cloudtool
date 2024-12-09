@@ -23,7 +23,7 @@ RangeImage::RangeImage(QWidget* parent) :
 {
     ui->setupUi(this);
     m_ren->GetActiveCamera()->Azimuth(180.0);
-    ui->qvtkwidget->GetRenderWindow()->AddRenderer(m_ren);
+    ui->qvtkwidget->renderWindow()->AddRenderer(m_ren);
     m_ren->SetBackground(1, 1, 1);
     connect(ui->checkBox, &QCheckBox::clicked, [=](bool checked)
             {
@@ -48,7 +48,7 @@ void RangeImage::updateRangeImage(Eigen::Affine3f viewer_pose)
     {
         m_image_data = vtkSmartPointer<vtkImageData>::New();
         m_ren->RemoveActor(m_actor);
-        ui->qvtkwidget->GetRenderWindow()->Render();
+        ui->qvtkwidget->renderWindow()->Render();
         m_cloudview->removePointCloud(RANGE_IMAGE_FLAG);
         return;
     }
@@ -67,7 +67,7 @@ void RangeImage::updateRangeImage(Eigen::Affine3f viewer_pose)
     m_ren->AddActor(m_actor);
     m_ren->ResetCamera();
     this->resize(2 * m_range_image->width + 6, 2 * m_range_image->height + 31);
-    ui->qvtkwidget->GetRenderWindow()->Render();
+    ui->qvtkwidget->renderWindow()->Render();
     if (ui->checkBox->isChecked())
     {
         m_cloudview->addPointCloudFromRangeImage(m_range_image, RANGE_IMAGE_FLAG, ct::Color::Green);

@@ -26,7 +26,7 @@
 #include "device/azurekinect.h"
 
 #include <QDebug>
-#include <QDesktopWidget>
+//#include <QDesktopWidget>
 #include <QDir>
 #include <QFile>
 #include <QDateTime>
